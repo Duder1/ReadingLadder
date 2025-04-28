@@ -1,57 +1,64 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charlotte's Reading List</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Charlotte's Reading List</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <img src="logo.png" alt="Logo" class="logo">
-        <h1>Charlotte's Reading List</h1>
-        <nav>
-            <button onclick="showSection('fiction')">Fiction</button>
-            <button onclick="showSection('nonfiction')">Nonfiction</button>
-        </nav>
-    </header>
-    <main>
-        <section id="fiction" class="track-section">
-            <h2>Fiction Track</h2>
-            <h3>Foundation <button onclick="sortSection('fiction-foundation')">Sort Lexile</button></h3>
-            <ul id="fiction-foundation"></ul>
-            <h3>Growth <button onclick="sortSection('fiction-growth')">Sort Lexile</button></h3>
-            <ul id="fiction-growth"></ul>
-            <h3>Stretch <button onclick="sortSection('fiction-stretch')">Sort Lexile</button></h3>
-            <ul id="fiction-stretch"></ul>
-        </section>
-        <section id="nonfiction" class="track-section" style="display:none;">
-            <h2>Nonfiction Track</h2>
-            <h3>Foundation <button onclick="sortSection('nonfiction-foundation')">Sort Lexile</button></h3>
-            <ul id="nonfiction-foundation"></ul>
-            <h3>Growth <button onclick="sortSection('nonfiction-growth')">Sort Lexile</button></h3>
-            <ul id="nonfiction-growth"></ul>
-            <h3>Stretch <button onclick="sortSection('nonfiction-stretch')">Sort Lexile</button></h3>
-            <ul id="nonfiction-stretch"></ul>
-        </section>
-    </main>
-    <section class="add-book-form">
-        <h2>Add a New Book</h2>
-        <input id="new-title" type="text" placeholder="Book Title">
-        <input id="new-author" type="text" placeholder="Author">
-        <input id="new-lexile" type="number" placeholder="Lexile Score">
-        <select id="new-track">
-            <option value="fiction">Fiction</option>
-            <option value="nonfiction">Nonfiction</option>
-        </select>
-        <select id="new-level">
-            <option value="foundation">Foundation</option>
-            <option value="growth">Growth</option>
-            <option value="stretch">Stretch</option>
-        </select>
-        <button onclick="addNewBook()">Add Book</button>
+  <header>
+    <img src="logo.png" alt="Owl Logo" class="logo">
+    <h1>Charlotte's Reading List</h1>
+    <nav>
+      <button onclick="showSection('fiction')">Fiction</button>
+      <button onclick="showSection('nonfiction')">Nonfiction</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="fiction" class="track-section">
+      <h2>Fiction Track</h2>
+      <h3>Foundation <button onclick="sortSection('fiction-foundation')">Sort Lexile</button></h3>
+      <ul id="fiction-foundation"></ul>
+
+      <h3>Growth <button onclick="sortSection('fiction-growth')">Sort Lexile</button></h3>
+      <ul id="fiction-growth"></ul>
+
+      <h3>Stretch <button onclick="sortSection('fiction-stretch')">Sort Lexile</button></h3>
+      <ul id="fiction-stretch"></ul>
     </section>
-    <script src="app.js"></script>
+
+    <section id="nonfiction" class="track-section" style="display:none;">
+      <h2>Nonfiction Track</h2>
+      <h3>Foundation <button onclick="sortSection('nonfiction-foundation')">Sort Lexile</button></h3>
+      <ul id="nonfiction-foundation"></ul>
+
+      <h3>Growth <button onclick="sortSection('nonfiction-growth')">Sort Lexile</button></h3>
+      <ul id="nonfiction-growth"></ul>
+
+      <h3>Stretch <button onclick="sortSection('nonfiction-stretch')">Sort Lexile</button></h3>
+      <ul id="nonfiction-stretch"></ul>
+    </section>
+  </main>
+
+  <section class="add-book-form">
+    <h2>Add a New Book</h2>
+    <input id="new-title"   type="text"    placeholder="Book Title">
+    <input id="new-author"  type="text"    placeholder="Author">
+    <input id="new-lexile"  type="number"  placeholder="Lexile Score">
+    <select id="new-track">
+      <option value="fiction">Fiction</option>
+      <option value="nonfiction">Nonfiction</option>
+    </select>
+    <select id="new-level">
+      <option value="foundation">Foundation</option>
+      <option value="growth">Growth</option>
+      <option value="stretch">Stretch</option>
+    </select>
+    <button onclick="addNewBook()">Add Book</button>
+  </section>
+
+  <script src="app.js"></script>
 </body>
 </html>
