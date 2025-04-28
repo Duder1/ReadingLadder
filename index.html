@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charlotte's Reading List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Charlotte's Reading List</h1>
+        <nav>
+            <button onclick="showSection('fiction')">Fiction</button>
+            <button onclick="showSection('nonfiction')">Nonfiction</button>
+        </nav>
+    </header>
+    <main>
+        <section id="fiction" class="track-section">
+            <h2>Fiction Track</h2>
+            <h3>Foundation</h3>
+            <ul id="fiction-foundation"></ul>
+            <h3>Growth</h3>
+            <ul id="fiction-growth"></ul>
+            <h3>Stretch</h3>
+            <ul id="fiction-stretch"></ul>
+        </section>
+        <section id="nonfiction" class="track-section" style="display:none;">
+            <h2>Nonfiction Track</h2>
+            <h3>Foundation</h3>
+            <ul id="nonfiction-foundation"></ul>
+            <h3>Growth</h3>
+            <ul id="nonfiction-growth"></ul>
+            <h3>Stretch</h3>
+            <ul id="nonfiction-stretch"></ul>
+        </section>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
