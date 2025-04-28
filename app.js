@@ -1,3 +1,4 @@
+// Safe load and save for localStorage
 function loadState(key, def) {
   try {
     const value = localStorage.getItem(key);
@@ -7,115 +8,158 @@ function loadState(key, def) {
   }
 }
 
-// Utility to save localStorage
 function saveState(key, val) {
   localStorage.setItem(key, JSON.stringify(val));
 }
 
-// Initial book arrays (full lists here)
+// Book Arrays
 let fictionFoundation = [
-  { title:"Matilda", author:"Roald Dahl", lexile:840, completed:true, thumb:loadState("fiction-foundation-0-thumb",null) },
-  { title:"James and the Giant Peach", author:"Roald Dahl", lexile:870, completed:true, thumb:loadState("fiction-foundation-1-thumb",null) },
-  { title:"The Twits", author:"Roald Dahl", lexile:790, completed:true, thumb:loadState("fiction-foundation-2-thumb",null) },
-  { title:"Danny, the Champion of the World", author:"Roald Dahl", lexile:770, completed:true, thumb:loadState("fiction-foundation-3-thumb",null) },
-  { title:"The Magic Misfits", author:"Neil Patrick Harris", lexile:760, completed:true, thumb:loadState("fiction-foundation-4-thumb",null) },
-  // Keeper of the Lost Cities series split:
-  { title:"Keeper of the Lost Cities", author:"Shannon Messenger", lexile:670, thumb:loadState("fiction-foundation-5-thumb",null) },
-  { title:"Exile", author:"Shannon Messenger", lexile:730, thumb:loadState("fiction-foundation-6-thumb",null) },
-  { title:"Everblaze", author:"Shannon Messenger", lexile:750, thumb:loadState("fiction-foundation-7-thumb",null) },
-  { title:"Neverseen", author:"Shannon Messenger", lexile:780, thumb:loadState("fiction-foundation-8-thumb",null) },
-  { title:"Lodestar", author:"Shannon Messenger", lexile:800, thumb:loadState("fiction-foundation-9-thumb",null) },
-  { title:"Nightfall", author:"Shannon Messenger", lexile:820, thumb:loadState("fiction-foundation-10-thumb",null) },
-  { title:"Flashback", author:"Shannon Messenger", lexile:840, thumb:loadState("fiction-foundation-11-thumb",null) },
-  { title:"Legacy", author:"Shannon Messenger", lexile:860, thumb:loadState("fiction-foundation-12-thumb",null) },
-  { title:"Stellarlune", author:"Shannon Messenger", lexile:880, thumb:loadState("fiction-foundation-13-thumb",null) }
+  { title: "Matilda", author: "Roald Dahl", lexile: 840, completed: true },
+  { title: "James and the Giant Peach", author: "Roald Dahl", lexile: 870, completed: true },
+  { title: "The Twits", author: "Roald Dahl", lexile: 790, completed: true },
+  { title: "Danny, the Champion of the World", author: "Roald Dahl", lexile: 770, completed: true },
+  { title: "The Magic Misfits", author: "Neil Patrick Harris", lexile: 760, completed: true },
+  { title: "Keeper of the Lost Cities", author: "Shannon Messenger", lexile: 670, completed: true },
+  { title: "Exile", author: "Shannon Messenger", lexile: 730, completed: true },
+  { title: "Everblaze", author: "Shannon Messenger", lexile: 750, completed: true },
+  { title: "Neverseen", author: "Shannon Messenger", lexile: 780, completed: true }
 ];
 
 let fictionGrowth = [
-  { title:"Wildwood", author:"Colin Meloy", lexile:890, completed:true, thumb:loadState("fiction-growth-0-thumb",null) },
-  { title:"The Mysterious Benedict Society", author:"Trenton Lee Stewart", lexile:890, thumb:loadState("fiction-growth-1-thumb",null) },
-  // (…and so on for all Growth books…)
+  { title: "Wildwood", author: "Colin Meloy", lexile: 890, completed: true },
+  { title: "The Mysterious Benedict Society", author: "Trenton Lee Stewart", lexile: 890, completed: false },
+  { title: "The Hunger Games", author: "Suzanne Collins", lexile: 810, completed: true },
+  { title: "Catching Fire", author: "Suzanne Collins", lexile: 820, completed: true },
+  { title: "Mockingjay", author: "Suzanne Collins", lexile: 800, completed: true },
+  { title: "The Ballad of Songbirds and Snakes", author: "Suzanne Collins", lexile: 860, completed: true },
+  { title: "A Wrinkle in Time", author: "Madeleine L'Engle", lexile: 740, completed: true }
 ];
 
 let fictionStretch = [
-  { title:"The Egypt Game", author:"Zilpha Keatley Snyder", lexile:1010, completed:true, thumb:loadState("fiction-stretch-0-thumb",null) },
-  { title:"Iron Widow", author:"Xiran Jay Zhao", lexile:1200, thumb:loadState("fiction-stretch-1-thumb",null) }
+  { title: "The Egypt Game", author: "Zilpha Keatley Snyder", lexile: 1010, completed: true },
+  { title: "Iron Widow", author: "Xiran Jay Zhao", lexile: 1200, completed: false }
 ];
 
 let nonfictionFoundation = [
-  { title:"Greeking Out", author:"National Geographic Kids", lexile:900, completed:true, thumb:loadState("nonfiction-foundation-0-thumb",null) },
-  { title:"Unicorns, Myths, and Monsters", author:"Linda S. Godfrey", lexile:950, completed:true, thumb:loadState("nonfiction-foundation-1-thumb",null) }
+  { title: "Greeking Out", author: "National Geographic Kids", lexile: 900, completed: true },
+  { title: "Unicorns, Myths, and Monsters", author: "Linda S. Godfrey", lexile: 950, completed: true }
 ];
 
 let nonfictionGrowth = [
-  { title:"Mistakes That Worked", author:"Charlotte Foltz Jones", lexile:1050, thumb:loadState("nonfiction-growth-0-thumb",null) },
-  { title:"Humble Pi", author:"Matt Parker", lexile:1260, completed:true, thumb:loadState("nonfiction-growth-1-thumb",null) },
-  { title:"Love Triangle", author:"Matt Parker", lexile:1150, thumb:loadState("nonfiction-growth-2-thumb",null) },
-  { title:"It's Not Rocket Science", author:"Ben Miller", lexile:1250, thumb:loadState("nonfiction-growth-3-thumb",null) }
+  { title: "Mistakes That Worked", author: "Charlotte Foltz Jones", lexile: 1050, completed: false },
+  { title: "It's Not Rocket Science", author: "Ben Miller", lexile: 1250, completed: false },
+  { title: "Love Triangle", author: "Matt Parker", lexile: 1150, completed: false },
+  { title: "Humble Pi", author: "Matt Parker", lexile: 1260, completed: true }
 ];
 
 let nonfictionStretch = [
-  { title:"What If?", author:"Randall Munroe", lexile:1300, completed:true, thumb:loadState("nonfiction-stretch-0-thumb",null) },
-  { title:"Spillover", author:"David Quammen", lexile:1300, thumb:loadState("nonfiction-stretch-1-thumb",null) },
-  { title:"Freakonomics", author:"Steven D. Levitt & Stephen J. Dubner", lexile:1240, thumb:loadState("nonfiction-stretch-2-thumb",null) }
+  { title: "What If?", author: "Randall Munroe", lexile: 1300, completed: true },
+  { title: "Freakonomics", author: "Steven D. Levitt & Stephen J. Dubner", lexile: 1240, completed: false },
+  { title: "Spillover", author: "David Quammen", lexile: 1300, completed: false }
 ];
 
-// Render functions
-function showSection(sec) {
-  document.getElementById('fiction').style.display   = sec==='fiction' ? 'block' : 'none';
-  document.getElementById('nonfiction').style.display= sec==='nonfiction'? 'block':'none';
+// Functions
+function showSection(section) {
+  document.getElementById('fiction').style.display = (section === 'fiction') ? 'block' : 'none';
+  document.getElementById('nonfiction').style.display = (section === 'nonfiction') ? 'block' : 'none';
 }
 
-function populateList(id, arr) {
-  const ul = document.getElementById(id);
-  ul.innerHTML = '';
-  arr.forEach((b,i) => {
+function populateList(sectionId, books) {
+  const section = document.getElementById(sectionId);
+  section.innerHTML = '';
+  books.forEach((book, index) => {
     const li = document.createElement('li');
+
+    const info = document.createElement('div');
+    info.className = "book-info";
+
     const cb = document.createElement('input');
-        cb.type='checkbox';
-        cb.checked = loadState(id+'-'+i+'-read', b.completed||false);
-        cb.onchange=()=>saveState(id+'-'+i+'-read', cb.checked);
-    const title = document.createElement('span'); title.className='book-title'; title.textContent=b.title;
-    const author= document.createElement('span'); author.className='book-author';author.textContent=b.author;
-    const lexile= document.createElement('span'); lexile.className='book-lexile';lexile.textContent=b.lexile;
-    const thumbs = document.createElement('span'); thumbs.className='thumbs';
-    ['up','down'].forEach(dir => {
-      const btn=document.createElement('button');
-      btn.innerText= dir==='up'?'👍':'👎';
-      btn.onclick =()=>{ saveState(id+'-'+i+'-thumb',dir); renderAll(); };
-      if(loadState(id+'-'+i+'-thumb',null)===dir) btn.style.backgroundColor = dir==='up'? '#20b2aa':'#c71585';
+    cb.type = 'checkbox';
+    cb.checked = loadState(`${sectionId}-${index}-read`, book.completed || false);
+    cb.onchange = () => saveState(`${sectionId}-${index}-read`, cb.checked);
+
+    const titleSpan = document.createElement('span');
+    titleSpan.className = 'book-title';
+    titleSpan.textContent = book.title;
+
+    const authorSpan = document.createElement('span');
+    authorSpan.className = 'book-author';
+    authorSpan.textContent = book.author;
+
+    const lexileSpan = document.createElement('span');
+    lexileSpan.className = 'book-lexile';
+    lexileSpan.textContent = book.lexile;
+
+    const thumbs = document.createElement('span');
+    thumbs.className = 'thumbs';
+
+    ['up', 'down'].forEach(direction => {
+      const btn = document.createElement('button');
+      btn.textContent = (direction === 'up') ? '👍' : '👎';
+      btn.onclick = () => {
+        saveState(`${sectionId}-${index}-thumb`, direction);
+        renderAll();
+      };
+      if (loadState(`${sectionId}-${index}-thumb`, null) === direction) {
+        btn.style.backgroundColor = (direction === 'up') ? '#20b2aa' : '#c71585';
+      }
       thumbs.appendChild(btn);
     });
-    const info = document.createElement('div'); info.className='book-info';
-    info.append(cb,title,author,lexile,thumbs);
+
+    info.append(cb, titleSpan, authorSpan, lexileSpan, thumbs);
     li.appendChild(info);
-    ul.appendChild(li);
+    section.appendChild(li);
   });
 }
 
-function renderAll(){
-  ['fiction-foundation','fiction-growth','fiction-stretch',
-   'nonfiction-foundation','nonfiction-growth','nonfiction-stretch']
-    .forEach(id => populateList(id, eval(id.replace('-', '_'))));
+function renderAll() {
+  populateList('fiction_foundation', fictionFoundation);
+  populateList('fiction_growth', fictionGrowth);
+  populateList('fiction_stretch', fictionStretch);
+  populateList('nonfiction_foundation', nonfictionFoundation);
+  populateList('nonfiction_growth', nonfictionGrowth);
+  populateList('nonfiction_stretch', nonfictionStretch);
 }
 
-function sortSection(id) {
-  const arr = eval(id.replace('-', '_'));
-  arr.sort((a,b)=>a.lexile-b.lexile);
-  populateList(id, arr);
+function sortSection(sectionId) {
+  let books;
+  if (sectionId === 'fiction_foundation') books = fictionFoundation;
+  else if (sectionId === 'fiction_growth') books = fictionGrowth;
+  else if (sectionId === 'fiction_stretch') books = fictionStretch;
+  else if (sectionId === 'nonfiction_foundation') books = nonfictionFoundation;
+  else if (sectionId === 'nonfiction_growth') books = nonfictionGrowth;
+  else if (sectionId === 'nonfiction_stretch') books = nonfictionStretch;
+
+  books.sort((a, b) => a.lexile - b.lexile);
+  populateList(sectionId, books);
 }
 
-function addNewBook(){
-  const t=document.getElementById('new-title').value.trim(),
-        a=document.getElementById('new-author').value.trim(),
-        l=parseInt(document.getElementById('new-lexile').value,10),
-        tr=document.getElementById('new-track').value,
-        lv=document.getElementById('new-level').value;
-  if(!t||!a||isNaN(l)){ alert('Fill all fields');return; }
-  const nb={title:t,author:a,lexile:l,completed:false, thumb:null};
-  const arrName = `${tr}-${lv}`.replace('-','');
-  eval(arrName).push(nb);
+function addNewBook() {
+  const title = document.getElementById('new-title').value.trim();
+  const author = document.getElementById('new-author').value.trim();
+  const lexile = parseInt(document.getElementById('new-lexile').value.trim(), 10);
+  const track = document.getElementById('new-track').value;
+  const level = document.getElementById('new-level').value;
+
+  if (!title || !author || isNaN(lexile)) {
+    alert('Please fill out all fields.');
+    return;
+  }
+
+  const newBook = { title, author, lexile, completed: false };
+
+  if (track === 'fiction') {
+    if (level === 'foundation') fictionFoundation.push(newBook);
+    else if (level === 'growth') fictionGrowth.push(newBook);
+    else fictionStretch.push(newBook);
+  } else {
+    if (level === 'foundation') nonfictionFoundation.push(newBook);
+    else if (level === 'growth') nonfictionGrowth.push(newBook);
+    else nonfictionStretch.push(newBook);
+  }
+
   renderAll();
 }
 
+// Start by rendering everything
 renderAll();
