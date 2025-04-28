@@ -105,8 +105,15 @@ function populateList(sectionId, books) {
       }
       thumbs.appendChild(btn);
     });
+   // Add Delete Button for EVERY book
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = '🗑️';
+    deleteBtn.onclick = () => {
+      books.splice(index, 1);
+      renderAll();
+    };
 
-    info.append(cb, titleSpan, authorSpan, lexileSpan, thumbs);
+    info.append(cb, titleSpan, authorSpan, lexileSpan, thumbs, deleteBtn);
     li.appendChild(info);
     section.appendChild(li);
   });
@@ -146,6 +153,7 @@ function addNewBook() {
     return;
   }
 
+  
   const newBook = { title, author, lexile, completed: false };
 
   if (track === 'fiction') {
