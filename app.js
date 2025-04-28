@@ -1,9 +1,16 @@
-// Utility to save/load localStorage state
-const saveState = (key, val) => localStorage.setItem(key, JSON.stringify(val));
-const loadState = (key, def) => {
-  const v = localStorage.getItem(key);
-  return v===null ? def : JSON.parse(v);
-};
+function loadState(key, def) {
+  try {
+    const value = localStorage.getItem(key);
+    return value !== null ? JSON.parse(value) : def;
+  } catch {
+    return def;
+  }
+}
+
+// Utility to save localStorage
+function saveState(key, val) {
+  localStorage.setItem(key, JSON.stringify(val));
+}
 
 // Initial book arrays (full lists here)
 let fictionFoundation = [
