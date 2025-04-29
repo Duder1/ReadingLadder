@@ -78,6 +78,18 @@ function populateList(sectionId, books) {
     cb.checked = loadState(`${sectionId}-${index}-read`, book.completed || false);
     cb.onchange = () => saveState(`${sectionId}-${index}-read`, cb.checked);
 
+    // Cover image (if available)
+    const coverImg = document.createElement('img');
+    coverImg.style.width = '40px';
+    coverImg.style.height = '60px';
+    coverImg.style.objectFit = 'cover';
+    coverImg.style.marginRight = '10px';
+    if (book.cover) {
+      coverImg.src = book.cover;
+    } else {
+      coverImg.style.display = 'none'; // Hide if no cover
+    }
+
     const titleSpan = document.createElement('span');
     titleSpan.className = 'book-title';
     titleSpan.textContent = book.title;
@@ -105,7 +117,7 @@ function populateList(sectionId, books) {
       }
       thumbs.appendChild(btn);
     });
-   // Add Delete Button for EVERY book
+
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = '🗑️';
     deleteBtn.onclick = () => {
@@ -113,11 +125,12 @@ function populateList(sectionId, books) {
       renderAll();
     };
 
-    info.append(cb, titleSpan, authorSpan, lexileSpan, thumbs, deleteBtn);
+    info.append(cb, coverImg, titleSpan, authorSpan, lexileSpan, thumbs, deleteBtn);
     li.appendChild(info);
     section.appendChild(li);
   });
 }
+
 
 function renderAll() {
   populateList('fiction_foundation', fictionFoundation);
