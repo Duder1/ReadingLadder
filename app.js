@@ -14,16 +14,17 @@ function saveState(key, val) {
 
 // Full Book Arrays with Cover Images
 let fictionFoundation = [
-  { title: "Matilda", author: "Roald Dahl", lexile: 840, completed: true, cover: "https://covers.openlibrary.org/b/id/8224152-M.jpg" },
-  { title: "James and the Giant Peach", author: "Roald Dahl", lexile: 870, completed: true, cover: "https://covers.openlibrary.org/b/id/8771055-M.jpg" },
-  { title: "The Twits", author: "Roald Dahl", lexile: 790, completed: true, cover: "https://covers.openlibrary.org/b/id/8762165-M.jpg" },
-  { title: "Danny, the Champion of the World", author: "Roald Dahl", lexile: 770, completed: true, cover: "https://covers.openlibrary.org/b/id/8231998-M.jpg" },
-  { title: "The Magic Misfits", author: "Neil Patrick Harris", lexile: 760, completed: true, cover: "https://covers.openlibrary.org/b/id/8593417-M.jpg" },
-  { title: "Keeper of the Lost Cities", author: "Shannon Messenger", lexile: 670, completed: true, cover: "https://covers.openlibrary.org/b/id/8779250-M.jpg" },
-  { title: "Exile", author: "Shannon Messenger", lexile: 730, completed: true, cover: "https://covers.openlibrary.org/b/id/8779251-M.jpg" },
-  { title: "Everblaze", author: "Shannon Messenger", lexile: 750, completed: true, cover: "https://covers.openlibrary.org/b/id/8779252-M.jpg" },
-  { title: "Neverseen", author: "Shannon Messenger", lexile: 780, completed: true, cover: "https://covers.openlibrary.org/b/id/8779253-M.jpg" }
+  { title: "Matilda", author: "Roald Dahl", lexile: 840, completed: true, cover: "https://covers.openlibrary.org/b/id/10449839-M.jpg" },
+  { title: "James and the Giant Peach", author: "Roald Dahl", lexile: 870, completed: true, cover: "https://covers.openlibrary.org/b/id/8373090-M.jpg" },
+  { title: "The Twits", author: "Roald Dahl", lexile: 790, completed: true, cover: "https://covers.openlibrary.org/b/id/8373092-M.jpg" },
+  { title: "Danny, the Champion of the World", author: "Roald Dahl", lexile: 770, completed: true, cover: "https://covers.openlibrary.org/b/id/8373086-M.jpg" },
+  { title: "The Magic Misfits", author: "Neil Patrick Harris", lexile: 760, completed: true, cover: "https://covers.openlibrary.org/b/id/8377908-M.jpg" },
+  { title: "Keeper of the Lost Cities", author: "Shannon Messenger", lexile: 670, completed: true, cover: "https://covers.openlibrary.org/b/id/8366601-M.jpg" },
+  { title: "Exile", author: "Shannon Messenger", lexile: 730, completed: true, cover: "https://covers.openlibrary.org/b/id/8366602-M.jpg" },
+  { title: "Everblaze", author: "Shannon Messenger", lexile: 750, completed: true, cover: "https://covers.openlibrary.org/b/id/8366603-M.jpg" },
+  { title: "Neverseen", author: "Shannon Messenger", lexile: 780, completed: true, cover: "https://covers.openlibrary.org/b/id/8366604-M.jpg" }
 ];
+
 
 let fictionGrowth = [
   { title: "Wildwood", author: "Colin Meloy", lexile: 890, completed: true, cover: "https://covers.openlibrary.org/b/id/7674514-M.jpg" },
@@ -31,32 +32,37 @@ let fictionGrowth = [
   { title: "The Hunger Games", author: "Suzanne Collins", lexile: 810, completed: true, cover: "https://covers.openlibrary.org/b/id/6499096-M.jpg" },
   { title: "Catching Fire", author: "Suzanne Collins", lexile: 820, completed: true, cover: "https://covers.openlibrary.org/b/id/6499095-M.jpg" },
   { title: "Mockingjay", author: "Suzanne Collins", lexile: 800, completed: true, cover: "https://covers.openlibrary.org/b/id/6499094-M.jpg" },
-  { title: "The Ballad of Songbirds and Snakes", author: "Suzanne Collins", lexile: 860, completed: true, cover: "https://covers.openlibrary.org/b/id/10274366-M.jpg" },
+  { title: "The Ballad of Songbirds and Snakes", author: "Suzanne Collins", lexile: 860, completed: true, cover: "https://covers.openlibrary.org/b/id/10587867-M.jpg" },
   { title: "A Wrinkle in Time", author: "Madeleine L'Engle", lexile: 740, completed: true, cover: "https://covers.openlibrary.org/b/id/8306661-M.jpg" }
 ];
+
 
 let fictionStretch = [
   { title: "The Egypt Game", author: "Zilpha Keatley Snyder", lexile: 1010, completed: true, cover: "https://covers.openlibrary.org/b/id/8235443-M.jpg" },
   { title: "Iron Widow", author: "Xiran Jay Zhao", lexile: 1200, completed: false, cover: "https://covers.openlibrary.org/b/id/12664936-M.jpg" }
 ];
 
+
 let nonfictionFoundation = [
-  { title: "Greeking Out", author: "National Geographic Kids", lexile: 900, completed: true, cover: "https://covers.openlibrary.org/b/id/11286241-M.jpg" },
-  { title: "Unicorns, Myths, and Monsters", author: "Linda S. Godfrey", lexile: 950, completed: true, cover: "https://covers.openlibrary.org/b/id/11626810-M.jpg" }
+  { title: "Greeking Out", author: "National Geographic Kids", lexile: 900, completed: true, cover: "https://covers.openlibrary.org/b/id/12667951-M.jpg" },
+  { title: "Unicorns, Myths, and Monsters", author: "Linda S. Godfrey", lexile: 950, completed: true, cover: "https://covers.openlibrary.org/b/id/12837535-M.jpg" }
 ];
 
+
 let nonfictionGrowth = [
-  { title: "Mistakes That Worked", author: "Charlotte Foltz Jones", lexile: 1050, completed: false, cover: "https://covers.openlibrary.org/b/id/8319298-M.jpg" },
+  { title: "Mistakes That Worked", author: "Charlotte Foltz Jones", lexile: 1050, completed: false, cover: "https://covers.openlibrary.org/b/id/8225635-M.jpg" },
   { title: "It's Not Rocket Science", author: "Ben Miller", lexile: 1250, completed: false, cover: "https://covers.openlibrary.org/b/id/10765821-M.jpg" },
-  { title: "Love Triangle", author: "Matt Parker", lexile: 1150, completed: false, cover: "https://covers.openlibrary.org/b/id/9352167-M.jpg" },
+  { title: "Love Triangle", author: "Matt Parker", lexile: 1150, completed: false, cover: "https://covers.openlibrary.org/b/id/11170282-M.jpg" },
   { title: "Humble Pi", author: "Matt Parker", lexile: 1260, completed: true, cover: "https://covers.openlibrary.org/b/id/9352168-M.jpg" }
 ];
 
+
 let nonfictionStretch = [
-  { title: "What If?", author: "Randall Munroe", lexile: 1300, completed: true, cover: "https://covers.openlibrary.org/b/id/8225635-M.jpg" },
-  { title: "Freakonomics", author: "Steven D. Levitt & Stephen J. Dubner", lexile: 1240, completed: false, cover: "https://covers.openlibrary.org/b/id/8156044-M.jpg" },
+  { title: "What If?", author: "Randall Munroe", lexile: 1300, completed: true, cover: "https://covers.openlibrary.org/b/id/8225636-M.jpg" },
+  { title: "Freakonomics", author: "Steven D. Levitt & Stephen J. Dubner", lexile: 1240, completed: false, cover: "https://covers.openlibrary.org/b/id/8231355-M.jpg" },
   { title: "Spillover", author: "David Quammen", lexile: 1300, completed: false, cover: "https://covers.openlibrary.org/b/id/8231354-M.jpg" }
 ];
+
 
 // Render and Add Functions
 function showSection(section) {
