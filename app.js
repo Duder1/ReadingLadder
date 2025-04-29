@@ -152,19 +152,66 @@ function sortSection(sectionId) {
   populateList(sectionId, books);
 }
 
-function addNewBook() {
-  const title = document.getElementById('new-title').value.trim();
-  const author = document.getElementById('new-author').value.trim();
-  const lexile = parseInt(document.getElementById('new-lexile').value.trim(), 10);
+async function addNewBook() {
+  const titleInput = document.getElementById('new-title').value.trim();
+  const authorInput = document.getElementById('new-author').value.trim();
+  const lexileInput = parseInt(document.getElementById('new-lexile').value.trim(), 10);
   const track = document.getElementById('new-track').value;
   const level = document.getElementById('new-level').value;
 
-  if (!title || !author || isNaN(lexile)) {
+  if (!titleInput || !authorInput || isNaN(lexileInput)) {
     alert('Please fill out all fields.');
     return;
   }
 
-  const newBook = { title, author, lexile, completed: false };
+  let realTitle = titleInput;
+  let realAuthor = authorInput;
+  let coverImageUrl = null;
+
+  try {
+    const response = await fetch(`https://openlibrary.org/search.json?title=${encodeURIComponent(titleInput)}`);
+    const data = await response.json();
+    if (data.docs && data.docs.length > 0) {
+      // Search for the best match
+      let bestMatch = null;
+      const normalizedInputTitle = titleInput.toLowerCase();
+      const normalizedInputAuthor = authorInput.toLowerCase();
+
+      for (const book of data.docs.slice(0, 10)) { // check first 10 results
+        const normalizedBookTitle = (book.title || "").toLowerCase();
+        const normalizedBookAuthor = (book.author_name && book.author_name.length > 0) ? book.author_name[0].toLowerCase() : "";
+
+        if (normalizedBookTitle === normalizedInputTitle) {
+          if (normalizedBookAuthor.includes(normalizedInputAuthor) || normalizedInputAuthor.includes(normalizedBookAuthor)) {
+            bestMatch = book;
+            break;
+          }
+        }
+      }
+
+      if (!bestMatch) {
+        bestMatch = data.docs[0]; // fallback to first if no perfect match
+      }
+
+      realTitle = bestMatch.title || titleInput;
+      realAuthor = (bestMatch.author_name && bestMatch.author_name.length > 0) ? bestMatch.author_name[0] : authorInput;
+      if (bestMatch.cover_i) {
+        coverImageUrl = `https://covers.openlibrary.org/b/id/${bestMatch.cover_i}-M.jpg`;
+      }
+    }
+  } catch (error) {
+    console.error('Open Library lookup failed:', error);
+    // Fallback to typed values
+  }
+
+  const newBook = { 
+    title: realTitle, 
+    author: realAuthor, 
+    lexile: lexileInput, 
+    completed: false,
+    cover: coverImageUrl
+  };
+
   if (track === 'fiction') {
     if (level === 'foundation') fictionFoundation.push(newBook);
     else if (level === 'growth') fictionGrowth.push(newBook);
