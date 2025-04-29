@@ -12,53 +12,53 @@ function saveState(key, val) {
   localStorage.setItem(key, JSON.stringify(val));
 }
 
-// Book Arrays
+// Full Book Arrays with Cover Images
 let fictionFoundation = [
-  { title: "Matilda", author: "Roald Dahl", lexile: 840, completed: true },
-  { title: "James and the Giant Peach", author: "Roald Dahl", lexile: 870, completed: true },
-  { title: "The Twits", author: "Roald Dahl", lexile: 790, completed: true },
-  { title: "Danny, the Champion of the World", author: "Roald Dahl", lexile: 770, completed: true },
-  { title: "The Magic Misfits", author: "Neil Patrick Harris", lexile: 760, completed: true },
-  { title: "Keeper of the Lost Cities", author: "Shannon Messenger", lexile: 670, completed: true },
-  { title: "Exile", author: "Shannon Messenger", lexile: 730, completed: true },
-  { title: "Everblaze", author: "Shannon Messenger", lexile: 750, completed: true },
-  { title: "Neverseen", author: "Shannon Messenger", lexile: 780, completed: true }
+  { title: "Matilda", author: "Roald Dahl", lexile: 840, completed: true, cover: "https://covers.openlibrary.org/b/id/8224152-M.jpg" },
+  { title: "James and the Giant Peach", author: "Roald Dahl", lexile: 870, completed: true, cover: "https://covers.openlibrary.org/b/id/8771055-M.jpg" },
+  { title: "The Twits", author: "Roald Dahl", lexile: 790, completed: true, cover: "https://covers.openlibrary.org/b/id/8762165-M.jpg" },
+  { title: "Danny, the Champion of the World", author: "Roald Dahl", lexile: 770, completed: true, cover: "https://covers.openlibrary.org/b/id/8231998-M.jpg" },
+  { title: "The Magic Misfits", author: "Neil Patrick Harris", lexile: 760, completed: true, cover: "https://covers.openlibrary.org/b/id/8593417-M.jpg" },
+  { title: "Keeper of the Lost Cities", author: "Shannon Messenger", lexile: 670, completed: true, cover: "https://covers.openlibrary.org/b/id/8779250-M.jpg" },
+  { title: "Exile", author: "Shannon Messenger", lexile: 730, completed: true, cover: "https://covers.openlibrary.org/b/id/8779251-M.jpg" },
+  { title: "Everblaze", author: "Shannon Messenger", lexile: 750, completed: true, cover: "https://covers.openlibrary.org/b/id/8779252-M.jpg" },
+  { title: "Neverseen", author: "Shannon Messenger", lexile: 780, completed: true, cover: "https://covers.openlibrary.org/b/id/8779253-M.jpg" }
 ];
 
 let fictionGrowth = [
-  { title: "Wildwood", author: "Colin Meloy", lexile: 890, completed: true },
-  { title: "The Mysterious Benedict Society", author: "Trenton Lee Stewart", lexile: 890, completed: false },
-  { title: "The Hunger Games", author: "Suzanne Collins", lexile: 810, completed: true },
-  { title: "Catching Fire", author: "Suzanne Collins", lexile: 820, completed: true },
-  { title: "Mockingjay", author: "Suzanne Collins", lexile: 800, completed: true },
-  { title: "The Ballad of Songbirds and Snakes", author: "Suzanne Collins", lexile: 860, completed: true },
-  { title: "A Wrinkle in Time", author: "Madeleine L'Engle", lexile: 740, completed: true }
+  { title: "Wildwood", author: "Colin Meloy", lexile: 890, completed: true, cover: "https://covers.openlibrary.org/b/id/7674514-M.jpg" },
+  { title: "The Mysterious Benedict Society", author: "Trenton Lee Stewart", lexile: 890, completed: false, cover: "https://covers.openlibrary.org/b/id/8593533-M.jpg" },
+  { title: "The Hunger Games", author: "Suzanne Collins", lexile: 810, completed: true, cover: "https://covers.openlibrary.org/b/id/6499096-M.jpg" },
+  { title: "Catching Fire", author: "Suzanne Collins", lexile: 820, completed: true, cover: "https://covers.openlibrary.org/b/id/6499095-M.jpg" },
+  { title: "Mockingjay", author: "Suzanne Collins", lexile: 800, completed: true, cover: "https://covers.openlibrary.org/b/id/6499094-M.jpg" },
+  { title: "The Ballad of Songbirds and Snakes", author: "Suzanne Collins", lexile: 860, completed: true, cover: "https://covers.openlibrary.org/b/id/10274366-M.jpg" },
+  { title: "A Wrinkle in Time", author: "Madeleine L'Engle", lexile: 740, completed: true, cover: "https://covers.openlibrary.org/b/id/8306661-M.jpg" }
 ];
 
 let fictionStretch = [
-  { title: "The Egypt Game", author: "Zilpha Keatley Snyder", lexile: 1010, completed: true },
-  { title: "Iron Widow", author: "Xiran Jay Zhao", lexile: 1200, completed: false }
+  { title: "The Egypt Game", author: "Zilpha Keatley Snyder", lexile: 1010, completed: true, cover: "https://covers.openlibrary.org/b/id/8235443-M.jpg" },
+  { title: "Iron Widow", author: "Xiran Jay Zhao", lexile: 1200, completed: false, cover: "https://covers.openlibrary.org/b/id/12664936-M.jpg" }
 ];
 
 let nonfictionFoundation = [
-  { title: "Greeking Out", author: "National Geographic Kids", lexile: 900, completed: true },
-  { title: "Unicorns, Myths, and Monsters", author: "Linda S. Godfrey", lexile: 950, completed: true }
+  { title: "Greeking Out", author: "National Geographic Kids", lexile: 900, completed: true, cover: "https://covers.openlibrary.org/b/id/11286241-M.jpg" },
+  { title: "Unicorns, Myths, and Monsters", author: "Linda S. Godfrey", lexile: 950, completed: true, cover: "https://covers.openlibrary.org/b/id/11626810-M.jpg" }
 ];
 
 let nonfictionGrowth = [
-  { title: "Mistakes That Worked", author: "Charlotte Foltz Jones", lexile: 1050, completed: false },
-  { title: "It's Not Rocket Science", author: "Ben Miller", lexile: 1250, completed: false },
-  { title: "Love Triangle", author: "Matt Parker", lexile: 1150, completed: false },
-  { title: "Humble Pi", author: "Matt Parker", lexile: 1260, completed: true }
+  { title: "Mistakes That Worked", author: "Charlotte Foltz Jones", lexile: 1050, completed: false, cover: "https://covers.openlibrary.org/b/id/8319298-M.jpg" },
+  { title: "It's Not Rocket Science", author: "Ben Miller", lexile: 1250, completed: false, cover: "https://covers.openlibrary.org/b/id/10765821-M.jpg" },
+  { title: "Love Triangle", author: "Matt Parker", lexile: 1150, completed: false, cover: "https://covers.openlibrary.org/b/id/9352167-M.jpg" },
+  { title: "Humble Pi", author: "Matt Parker", lexile: 1260, completed: true, cover: "https://covers.openlibrary.org/b/id/9352168-M.jpg" }
 ];
 
 let nonfictionStretch = [
-  { title: "What If?", author: "Randall Munroe", lexile: 1300, completed: true },
-  { title: "Freakonomics", author: "Steven D. Levitt & Stephen J. Dubner", lexile: 1240, completed: false },
-  { title: "Spillover", author: "David Quammen", lexile: 1300, completed: false }
+  { title: "What If?", author: "Randall Munroe", lexile: 1300, completed: true, cover: "https://covers.openlibrary.org/b/id/8225635-M.jpg" },
+  { title: "Freakonomics", author: "Steven D. Levitt & Stephen J. Dubner", lexile: 1240, completed: false, cover: "https://covers.openlibrary.org/b/id/8156044-M.jpg" },
+  { title: "Spillover", author: "David Quammen", lexile: 1300, completed: false, cover: "https://covers.openlibrary.org/b/id/8231354-M.jpg" }
 ];
 
-// Functions
+// Render and Add Functions
 function showSection(section) {
   document.getElementById('fiction').style.display = (section === 'fiction') ? 'block' : 'none';
   document.getElementById('nonfiction').style.display = (section === 'nonfiction') ? 'block' : 'none';
@@ -78,7 +78,6 @@ function populateList(sectionId, books) {
     cb.checked = loadState(`${sectionId}-${index}-read`, book.completed || false);
     cb.onchange = () => saveState(`${sectionId}-${index}-read`, cb.checked);
 
-    // Cover image (if available)
     const coverImg = document.createElement('img');
     coverImg.style.width = '40px';
     coverImg.style.height = '60px';
@@ -87,7 +86,7 @@ function populateList(sectionId, books) {
     if (book.cover) {
       coverImg.src = book.cover;
     } else {
-      coverImg.style.display = 'none'; // Hide if no cover
+      coverImg.style.display = 'none';
     }
 
     const titleSpan = document.createElement('span');
@@ -131,7 +130,6 @@ function populateList(sectionId, books) {
   });
 }
 
-
 function renderAll() {
   populateList('fiction_foundation', fictionFoundation);
   populateList('fiction_growth', fictionGrowth);
@@ -154,47 +152,19 @@ function sortSection(sectionId) {
   populateList(sectionId, books);
 }
 
-async function addNewBook() {
-  const titleInput = document.getElementById('new-title').value.trim();
-  const authorInput = document.getElementById('new-author').value.trim();
-  const lexileInput = parseInt(document.getElementById('new-lexile').value.trim(), 10);
+function addNewBook() {
+  const title = document.getElementById('new-title').value.trim();
+  const author = document.getElementById('new-author').value.trim();
+  const lexile = parseInt(document.getElementById('new-lexile').value.trim(), 10);
   const track = document.getElementById('new-track').value;
   const level = document.getElementById('new-level').value;
 
-  if (!titleInput || !authorInput || isNaN(lexileInput)) {
+  if (!title || !author || isNaN(lexile)) {
     alert('Please fill out all fields.');
     return;
   }
 
-  // Fetch book info from Open Library
-  let realTitle = titleInput;
-  let realAuthor = authorInput;
-  let coverImageUrl = null;
-
-  try {
-    const response = await fetch(`https://openlibrary.org/search.json?title=${encodeURIComponent(titleInput)}`);
-    const data = await response.json();
-    if (data.docs && data.docs.length > 0) {
-      const firstMatch = data.docs[0];
-      realTitle = firstMatch.title || titleInput;
-      realAuthor = (firstMatch.author_name && firstMatch.author_name.length > 0) ? firstMatch.author_name[0] : authorInput;
-      if (firstMatch.cover_i) {
-        coverImageUrl = `https://covers.openlibrary.org/b/id/${firstMatch.cover_i}-M.jpg`;
-      }
-    }
-  } catch (error) {
-    console.error('Open Library lookup failed:', error);
-    // Fallback: just use typed input
-  }
-
-  const newBook = { 
-    title: realTitle, 
-    author: realAuthor, 
-    lexile: lexileInput, 
-    completed: false,
-    cover: coverImageUrl
-  };
-
+  const newBook = { title, author, lexile, completed: false };
   if (track === 'fiction') {
     if (level === 'foundation') fictionFoundation.push(newBook);
     else if (level === 'growth') fictionGrowth.push(newBook);
@@ -208,5 +178,5 @@ async function addNewBook() {
   renderAll();
 }
 
-// Start by rendering everything
+// Start rendering
 renderAll();
