@@ -141,20 +141,46 @@ function sortSection(sectionId) {
   populateList(sectionId, books);
 }
 
-function addNewBook() {
-  const title = document.getElementById('new-title').value.trim();
-  const author = document.getElementById('new-author').value.trim();
-  const lexile = parseInt(document.getElementById('new-lexile').value.trim(), 10);
+async function addNewBook() {
+  const titleInput = document.getElementById('new-title').value.trim();
+  const authorInput = document.getElementById('new-author').value.trim();
+  const lexileInput = parseInt(document.getElementById('new-lexile').value.trim(), 10);
   const track = document.getElementById('new-track').value;
   const level = document.getElementById('new-level').value;
 
-  if (!title || !author || isNaN(lexile)) {
+  if (!titleInput || !authorInput || isNaN(lexileInput)) {
     alert('Please fill out all fields.');
     return;
   }
 
-  
-  const newBook = { title, author, lexile, completed: false };
+  // Fetch book info from Open Library
+  let realTitle = titleInput;
+  let realAuthor = authorInput;
+  let coverImageUrl = null;
+
+  try {
+    const response = await fetch(`https://openlibrary.org/search.json?title=${encodeURIComponent(titleInput)}`);
+    const data = await response.json();
+    if (data.docs && data.docs.length > 0) {
+      const firstMatch = data.docs[0];
+      realTitle = firstMatch.title || titleInput;
+      realAuthor = (firstMatch.author_name && firstMatch.author_name.length > 0) ? firstMatch.author_name[0] : authorInput;
+      if (firstMatch.cover_i) {
+        coverImageUrl = `https://covers.openlibrary.org/b/id/${firstMatch.cover_i}-M.jpg`;
+      }
+    }
+  } catch (error) {
+    console.error('Open Library lookup failed:', error);
+    // Fallback: just use typed input
+  }
+
+  const newBook = { 
+    title: realTitle, 
+    author: realAuthor, 
+    lexile: lexileInput, 
+    completed: false,
+    cover: coverImageUrl
+  };
 
   if (track === 'fiction') {
     if (level === 'foundation') fictionFoundation.push(newBook);
